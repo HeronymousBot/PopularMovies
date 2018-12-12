@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_height="match_parent"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
 
-    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
     android:background="@color/mainBackground">
 
 
     <ProgressBar
         android:id="@+id/pb_loading_indicator"
-        android:layout_height="42dp"
         android:layout_width="42dp"
+        android:layout_height="42dp"
         android:layout_gravity="center"
         android:visibility="invisible" />
 
@@ -19,8 +19,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clipToPadding="false"
-        android:paddingBottom="@dimen/activity_margin_content"
-        android:paddingTop="@dimen/activity_margin_content" />
+        android:paddingTop="@dimen/activity_margin_content"
+        android:paddingBottom="@dimen/activity_margin_content" />
+
+    <TextView
+        android:id="@+id/when_empty_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:textColor="#FFF" />
 
 
 </FrameLayout>

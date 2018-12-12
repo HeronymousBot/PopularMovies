@@ -1,6 +1,8 @@
 package com.example.heronymousbot.popularmovies;
 
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.net.URL;
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar mLoadingIndicator;
     private RecyclerView mRecyclerView;
     private MovieAdapter mAdapter;
+    private TextView mWhenEmptyTextView;
 
 
     @Override
@@ -30,7 +34,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mLoadingIndicator = findViewById(R.id.pb_loading_indicator);
-
+        mWhenEmptyTextView = findViewById(R.id.when_empty_tv);
+        mRecyclerView = findViewById(R.id.rv_movie_list);
         makeMovieSearchQuery("popular");
 
     }
@@ -48,10 +53,12 @@ public class MainActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             mLoadingIndicator.setVisibility(View.VISIBLE);
+
         }
 
         @Override
         protected ArrayList<Movie> doInBackground(URL... params) {
+
             URL searchUrl = params[0];
             ArrayList<Movie> moviesList = null;
             try {
@@ -62,19 +69,29 @@ public class MainActivity extends AppCompatActivity {
             return moviesList;
         }
 
+
         @Override
         protected void onPostExecute(ArrayList<Movie> moviesList) {
+            if (isOnline()) {
+                mLoadingIndicator.setVisibility(View.INVISIBLE);
+                mLoadingIndicator.setVisibility(View.INVISIBLE);
+                mWhenEmptyTextView.setVisibility(View.GONE);
+                mRecyclerView.setVisibility(View.VISIBLE);
+                mRecyclerView.setHasFixedSize(true);
+                mAdapter = new MovieAdapter(getApplicationContext(), moviesList);
+                RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this, 2);
+                mRecyclerView.setLayoutManager(layoutManager);
+                mRecyclerView.setAdapter(mAdapter);
+            } else {
+                mRecyclerView.setVisibility(View.GONE);
+                mLoadingIndicator.setVisibility(View.GONE);
+                mWhenEmptyTextView.setVisibility(View.VISIBLE);
+                mWhenEmptyTextView.setText("No internet connection available.");
+            }
 
-            mLoadingIndicator.setVisibility(View.INVISIBLE);
-            mRecyclerView = findViewById(R.id.rv_movie_list);
-            mRecyclerView.setHasFixedSize(true);
-            mAdapter = new MovieAdapter(getApplicationContext(), moviesList);
-            RecyclerView.LayoutManager layoutManager = new GridLayoutManager(MainActivity.this, 2);
-            mRecyclerView.setLayoutManager(layoutManager);
-            mRecyclerView.setAdapter(mAdapter);
         }
-    }
 
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -88,21 +105,30 @@ public class MainActivity extends AppCompatActivity {
         switch (itemThatWasClickedId) {
 
             case R.id.most_popular_option:
-                Toast.makeText(this, "These are the most popular movies!",
-                        Toast.LENGTH_SHORT).show();
-                makeMovieSearchQuery("popular");
+                if (isOnline()) {
+                    Toast.makeText(this, "These are the most popular movies!",
+                            Toast.LENGTH_SHORT).show();
+                    makeMovieSearchQuery("popular");
+                }
+
                 return true;
 
             case R.id.top_rated_option:
-                Toast.makeText(this, "These are the top rated movies!",
-                        Toast.LENGTH_SHORT).show();
-                makeMovieSearchQuery("top_rated");
+                if (isOnline()) {
+                    Toast.makeText(this, "These are the top rated movies!",
+                            Toast.LENGTH_SHORT).show();
+                    makeMovieSearchQuery("top_rated");
+                }
+
                 return true;
 
             case R.id.upcoming_option:
-                Toast.makeText(this, "These are the upcoming movies!",
-                        Toast.LENGTH_SHORT).show();
-                makeMovieSearchQuery("upcoming");
+                if (isOnline()) {
+                    Toast.makeText(this, "These are the upcoming movies!",
+                            Toast.LENGTH_SHORT).show();
+                    makeMovieSearchQuery("upcoming");
+                }
+
                 return true;
 
             default:
@@ -111,6 +137,14 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+    }
+
+    public boolean isOnline() {
+        ConnectivityManager cm =
+                (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        return cm.getActiveNetworkInfo() != null &&
+                cm.getActiveNetworkInfo().isConnectedOrConnecting();
     }
 
 }

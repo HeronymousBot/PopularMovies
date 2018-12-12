@@ -19,7 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MovieDetail"></activity>
+        <activity android:name=".MovieDetail">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.heronymousbot.popularmovies.MainActivity"/>
+        </activity>
+        android:parentActivityName="com.example.myfirstapp.MainActivity" >
+
     </application>
 
 </manifest>

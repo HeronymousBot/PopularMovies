@@ -52,27 +52,4 @@ public class MovieDetail extends AppCompatActivity {
         Picasso.get().load(poster).fit().into(moviePoster);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.detail_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int itemThatWasClickedId = item.getItemId();
-        switch (itemThatWasClickedId) {
-
-            case R.id.back_to_main:
-                Intent mainIntent = new Intent(getBaseContext(), MainActivity.class);
-                startActivity(mainIntent);
-                return true;
-
-            default:
-                return super.onOptionsItemSelected(item);
-
-        }
-
-
-    }
 }
