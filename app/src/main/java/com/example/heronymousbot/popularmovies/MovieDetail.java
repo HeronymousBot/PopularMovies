@@ -29,17 +29,20 @@ public class MovieDetail extends AppCompatActivity {
         final String releaseDate = intent.getStringExtra(MovieAdapter.KEY_RELEASE_DATE);
         String voteAverage = intent.getStringExtra(MovieAdapter.KEY_VOTE_AVERAGE);
 
+        String modifiedDate;
+        if (releaseDate != null) {
+            modifiedDate = releaseDate.substring(8, 10) + "/" +
+                    releaseDate.substring(5, 7) + "/" + releaseDate.substring(0, 4);
 
-        movieVoteAverage.setBackgroundColor(getResources().getColor(R.color.colorAccent));
-
-
-
-
+            modifiedDate = "Released in " + modifiedDate;
+        } else {
+            modifiedDate = "No release date available.";
+        }
 
 
         movieTitle.setText(title);
         movieOverview.setText(overview);
-        movieReleaseDate.setText(releaseDate.substring(0,4));
+        movieReleaseDate.setText(modifiedDate);
         movieVoteAverage.setText(voteAverage);
 
 

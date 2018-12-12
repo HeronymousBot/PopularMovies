@@ -34,7 +34,8 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     private ArrayList<Movie> moviesList;
     private Context context;
-    public MovieAdapter(Context context, ArrayList<Movie> moviesList){
+
+    public MovieAdapter(Context context, ArrayList<Movie> moviesList) {
         this.context = context;
         this.moviesList = moviesList;
     }
@@ -47,7 +48,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     @NonNull
     @Override
-    public void onBindViewHolder( MovieViewHolder holder, final int position) {
+    public void onBindViewHolder(MovieViewHolder holder, final int position) {
         Movie currentMovie = moviesList.get(position);
         Picasso.get()
                 .load(currentMovie.getMoviePoster()).fit().centerCrop().into(holder.moviePoster);
@@ -75,10 +76,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         return moviesList.size();
     }
 
-    public class MovieViewHolder extends RecyclerView.ViewHolder{
+    public class MovieViewHolder extends RecyclerView.ViewHolder {
         public ImageView moviePoster;
 
-        public MovieViewHolder(View itemView){
+        public MovieViewHolder(View itemView) {
             super(itemView);
             moviePoster = itemView.findViewById(R.id.movie_list_item);
         }

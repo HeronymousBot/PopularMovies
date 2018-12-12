@@ -1,51 +1,71 @@
-<ScrollView android:layout_height="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@color/mainBackground"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/mainBackground">
 
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="20dp"
         android:background="@color/mainBackground"
-        xmlns:android="http://schemas.android.com/apk/res/android">
+        android:orientation="vertical">
 
         <ImageView
             android:id="@+id/movie_poster"
-            android:layout_gravity="center_horizontal"
             android:layout_width="200dp"
-            android:layout_height="300dp" />
+            android:layout_height="300dp"
+            android:layout_gravity="center_horizontal" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/movie_title"
-                android:textColor="#FFF"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="#FFF"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/movie_vote_average"
-                android:textColor="#FFF"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/rounded_corner"
+                android:fontFamily="sans-serif-condensed"
+                android:padding="3.5dp"
+                android:textColor="#FFF" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/movie_overview"
-            android:textColor="#FFF"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="30dp"
+            android:fontFamily="sans-serif-condensed"
+            android:padding="10dp"
+            android:textColor="#FFF"
+            android:textSize="15sp" />
 
         <TextView
             android:id="@+id/movie_release_date"
-            android:textColor="#FFF"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginLeft="40dp"
+            android:layout_marginBottom="50dp"
+            android:fontFamily="sans-serif-condensed"
+            android:textColor="#FFF"
+            android:textStyle="italic" />
 
     </LinearLayout>
+
 </ScrollView>

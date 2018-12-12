@@ -27,7 +27,7 @@ import java.util.ArrayList;
 
 import static android.view.View.GONE;
 
-public class MainActivity extends AppCompatActivity{
+public class MainActivity extends AppCompatActivity {
 
     private ProgressBar mLoadingIndicator;
     private RecyclerView mRecyclerView;
@@ -85,10 +85,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
 
-
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
@@ -98,7 +94,7 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemThatWasClickedId = item.getItemId();
-        switch(itemThatWasClickedId){
+        switch (itemThatWasClickedId) {
 
             case R.id.most_popular_option:
                 Toast.makeText(this, "These are the most popular movies!",
@@ -114,9 +110,9 @@ public class MainActivity extends AppCompatActivity{
 
             case R.id.upcoming_option:
                 Toast.makeText(this, "These are the upcoming movies!",
-                    Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_SHORT).show();
                 makeMovieSearchQuery("upcoming");
-            return true;
+                return true;
 
             default:
                 return super.onOptionsItemSelected(item);

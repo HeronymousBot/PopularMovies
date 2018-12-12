@@ -5,21 +5,18 @@
     <item
         android:id="@+id/most_popular_option"
         android:orderInCategory="1"
-        app:showAsAction="never"
         android:title="@string/most_popular_option"
-        />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/top_rated_option"
         android:orderInCategory="2"
-        app:showAsAction="never"
         android:title="@string/top_rated_option"
-        />
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/upcoming_option"
         android:orderInCategory="3"
-        app:showAsAction="never"
         android:title="@string/upcoming_option"
-        />
+        app:showAsAction="never" />
 </menu>

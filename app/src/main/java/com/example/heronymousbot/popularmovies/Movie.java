@@ -8,7 +8,7 @@ public class Movie {
     private String averageVote;
     private int backgroundColor;
 
-    public Movie(String title, String releaseDate, String moviePoster, double averageVote, String overview){
+    public Movie(String title, String releaseDate, String moviePoster, double averageVote, String overview) {
 
         this.title = title;
         this.releaseDate = releaseDate;
@@ -16,17 +16,13 @@ public class Movie {
         this.averageVote = Double.toString(averageVote);
         this.overview = overview;
 
-       if(averageVote >= 8.0){
-           this.backgroundColor = R.color.freshFilm;
-       }
-
-       else if(averageVote >= 6.0 && averageVote < 8.0){
-           this.backgroundColor = R.color.averageFilm;
-       }
-
-       else{
-           this.backgroundColor = R.color.rottenFilm;
-       }
+        if (averageVote >= 8.0) {
+            this.backgroundColor = R.color.freshFilm;
+        } else if (averageVote >= 6.0 && averageVote < 8.0) {
+            this.backgroundColor = R.color.averageFilm;
+        } else {
+            this.backgroundColor = R.color.rottenFilm;
+        }
     }
 
     public String getTitle() {
