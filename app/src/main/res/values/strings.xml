@@ -3,4 +3,7 @@
     <string name="most_popular_option">Most Popular</string>
     <string name="top_rated_option">Top Rated</string>
     <string name="upcoming_option">Upcoming</string>
+    <string name="popular_query">popular</string>
+    <string name="top_rated_query">top_rated</string>
+    <string name="upcoming_query">upcoming</string>
 </resources>

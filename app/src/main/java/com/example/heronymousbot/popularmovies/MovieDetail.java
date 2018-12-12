@@ -3,8 +3,11 @@ package com.example.heronymousbot.popularmovies;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -47,5 +50,31 @@ public class MovieDetail extends AppCompatActivity {
 
 
         Picasso.get().load(poster).fit().into(moviePoster);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.detail_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemThatWasClickedId = item.getItemId();
+        switch (itemThatWasClickedId) {
+
+            case R.id.back_to_main:
+                Intent mainIntent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(mainIntent);
+                return true;
+
+
+
+            default:
+                return super.onOptionsItemSelected(item);
+
+        }
+
+
     }
 }
