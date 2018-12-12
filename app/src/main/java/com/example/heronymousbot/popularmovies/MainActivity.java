@@ -1,31 +1,22 @@
 package com.example.heronymousbot.popularmovies;
 
-import android.app.LoaderManager;
-import android.content.Intent;
-import android.content.Loader;
-import android.net.Uri;
+
 import android.os.AsyncTask;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
+
 import android.widget.Toast;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import static android.view.View.GONE;
 
 public class MainActivity extends AppCompatActivity {
 

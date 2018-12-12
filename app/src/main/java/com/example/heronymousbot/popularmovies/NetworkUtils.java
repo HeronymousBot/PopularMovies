@@ -30,7 +30,7 @@ public class NetworkUtils {
     public static URL buildUrl(String categorySearchQuery) {
         Uri builtUri = Uri.parse(MOVIEDB_BASE_URL).buildUpon()
                 .appendPath(categorySearchQuery)
-                .appendQueryParameter(API_KEY, "ad376c0763ee7fc1330f8182f81ff705")
+                .appendQueryParameter(API_KEY, "##############################")
                 .appendQueryParameter(LANGUAGE, "en-US")
                 .build();
 

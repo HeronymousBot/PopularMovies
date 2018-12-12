@@ -68,8 +68,6 @@ public class MovieDetail extends AppCompatActivity {
                 startActivity(mainIntent);
                 return true;
 
-
-
             default:
                 return super.onOptionsItemSelected(item);
 
